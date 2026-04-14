@@ -654,3 +654,79 @@ body {
     width: 0%;
 }
 .progress-text { color: var(--text-secondary); font-size: 10.5px; }
+
+/* ============================================================
+   MOBILE RESPONSIVE  (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+
+    body { font-size: 13px; }
+
+    /* Stack topbar items */
+    .topbar {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 8px 10px;
+        gap: 7px;
+    }
+    .logo { font-size: 12px; }
+    .topbar-btn { padding: 6px 11px; font-size: 11px; }
+    .film-label { display: none; }
+
+    /* Full-width single column — hide side panels by default */
+    .main-layout { flex-direction: column; }
+
+    .left-panel {
+        display: none; /* hidden on mobile; accessible via bottom sheet */
+    }
+
+    .right-panel {
+        width: 100%;
+        min-width: 0;
+        border-left: none;
+        border-top: 1px solid var(--border);
+        max-height: 44vh;
+        overflow-y: auto;
+    }
+
+    /* Taller filmstrip */
+    .filmstrip {
+        height: 80px;
+        min-height: 80px;
+    }
+    .filmstrip-item { width: 60px; height: 60px; }
+
+    /* Preview */
+    .preview-container { padding: 10px; }
+
+    /* Bigger slider targets */
+    .control-slider { height: 5px; }
+    .control-slider::-webkit-slider-thumb { width: 18px; height: 18px; }
+    .control-slider::-moz-range-thumb     { width: 18px; height: 18px; }
+
+    .control-label { width: 80px; font-size: 11px; }
+    .control-value { font-size: 11px; width: 26px; }
+
+    /* Panels full-width */
+    .rp-header { padding: 10px 13px; font-size: 11px; }
+    .rp-body   { padding: 10px 13px; }
+
+    /* Before/after bar */
+    .before-after-bar { bottom: 8px; }
+    .ba-btn { padding: 7px 22px; font-size: 12px; }
+
+    /* Histogram smaller */
+    #histogramCanvas { height: 56px; }
+
+    /* View toolbar */
+    .view-toolbar { padding: 5px 10px; height: auto; flex-wrap: wrap; gap: 3px; }
+    .image-info-text { font-size: 10px; max-width: 200px; }
+}
+
+/* Very small screens (iPhone SE, etc.) */
+@media (max-width: 390px) {
+    .topbar-btn { padding: 6px 9px; font-size: 10px; }
+    .logo { font-size: 11px; letter-spacing: 1px; }
+    .filmstrip { height: 68px; min-height: 68px; }
+    .filmstrip-item { width: 52px; height: 52px; }
+}
