@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kodak Vision 2383 — Film Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="topbar">
+    <div class="logo">KODAK VISION 2383</div>
+    <div class="topbar-divider"></div>
+    <button class="topbar-btn" onclick="document.getElementById('fileInput').click()">+ Import Photos</button>
+    <input type="file" id="fileInput" accept="image/*" multiple style="display:none" onchange="handleFileImport(event)">
+    <div class="processing-indicator" id="processingIndicator">
+        <div class="spinner"></div>
+        <span id="processingText">Processing...</span>
+    </div>
+    <div class="topbar-spacer"></div>
+    <button class="topbar-btn" onclick="exportCurrent()">Export Current</button>
+    <button class="topbar-btn primary" onclick="exportAll()">Export All</button>
+</div>
+
+<!-- Main Layout -->
+<div class="main-layout">
+
+    <!-- Left Panel -->
+    <div class="left-panel">
+        <div class="panel-section">
+            <div class="panel-header" onclick="toggleSection('navigatorBody')">
+                Navigator <span class="chevron">▼</span>
+            </div>
+            <div class="collapsible" id="navigatorBody">
+                <div class="navigator-preview">
+                    <canvas id="navigatorCanvas" class="navigator-canvas" width="196" height="130"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-section" style="flex:1; display:flex; flex-direction:column; overflow:hidden;">
+            <div class="panel-header">
+                Library <span id="fileCount" style="color:var(--text-dim)">0 photos</span>
+            </div>
+            <div class="file-list" id="fileList">
+                <div class="empty-list-msg">Import photos to begin</div>
+            </div>
+        </div>
+
+        <div class="upload-area">
+            <div class="upload-btn" id="dropZone" onclick="document.getElementById('fileInput').click()">
+                &#8681; Drop photos here or click to import
+            </div>
+        </div>
+    </div>
+
+    <!-- Center Area -->
+    <div class="center-area">
+        <div class="view-toolbar">
+            <button class="view-btn active" id="btnLoupe" onclick="setView('loupe')">Loupe</button>
+            <button class="view-btn" id="btnGrid" onclick="setView('grid')">Grid</button>
+            <div class="view-divider"></div>
+            <button class="view-btn active" id="btnZoomFit" onclick="setZoom('fit')">Fit</button>
+            <button class="view-btn" id="btnZoom100" onclick="setZoom('100')">1:1</button>
+            <div class="view-divider"></div>
+            <span class="image-info-text" id="imageInfo">No image selected</span>
+            <div class="topbar-spacer"></div>
+            <span class="film-label">Kodak Vision 2383 Print Film Emulation</span>
+        </div>
+
+        <div class="preview-container" id="previewContainer">
+            <div class="empty-state" id="emptyState">
+                <div class="empty-icon">&#9724;</div>
+                <div class="empty-text">No photos imported</div>
+                <div class="empty-subtext">Import photos using the button above or drag and drop anywhere</div>
+            </div>
+            <canvas id="mainCanvas" class="preview-canvas" style="display:none;"></canvas>
+            <div id="gridView" style="display:none;"></div>
+
+            <div class="before-after-bar" id="baBar" style="display:none;">
+                <button class="ba-btn active" id="btnAfter" onclick="setPreview('after')">After</button>
+                <button class="ba-btn" id="btnBefore" onclick="setPreview('before')">Before</button>
+            </div>
+        </div>
+
+        <div class="filmstrip" id="filmstrip">
+            <div class="filmstrip-empty">No photos — import to begin</div>
+        </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+
+        <!-- Film Emulation header -->
+        <div class="rp-section">
+            <div class="rp-header">Film Emulation</div>
+            <div class="rp-body">
+                <div class="preset-badge">KODAK VISION 2383</div>
+                <div class="preset-desc">
+                    Cinematic print film with warm highlights, lifted shadows, cool shadow crossover, and subtle halation.
+                </div>
+                <div class="toggle-row">
+                    <span class="toggle-label">Enable Effect</span>
+                    <label class="toggle">
+                        <input type="checkbox" id="effectEnabled" checked onchange="scheduleUpdate()">
+                        <span class="toggle-track"></span>
+                    </label>
+                </div>
+                <div class="toggle-row">
+                    <span class="toggle-label">Film Grain</span>
+                    <label class="toggle">
+                        <input type="checkbox" id="grainEnabled" checked onchange="scheduleUpdate()">
+                        <span class="toggle-track"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Histogram -->
+        <div class="rp-section">
+            <div class="rp-header" onclick="toggleRPSection('histogramBody')">
+                Histogram <span class="chevron">▼</span>
+            </div>
+            <div class="collapsible" id="histogramBody">
+                <div class="rp-body" style="padding-bottom:10px;">
+                    <canvas id="histogramCanvas" class="histogram-canvas" width="228" height="68"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tone -->
+        <div class="rp-section">
+            <div class="rp-header" onclick="toggleRPSection('toneBody')">
+                Tone <span class="chevron">▼</span>
+            </div>
+            <div class="collapsible" id="toneBody">
+                <div class="rp-body">
+                    <div class="control-row">
+                        <span class="control-label">Exposure</span>
+                        <input type="range" class="control-slider" id="sliderExposure" min="-100" max="100" value="0" oninput="sliderChanged(this,'exposure','valExposure')">
+                        <span class="control-value" id="valExposure">0</span>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-label">Contrast</span>
+                        <input type="range" class="control-slider" id="sliderContrast" min="-100" max="100" value="0" oninput="sliderChanged(this,'contrast','valContrast')">
+                        <span class="control-value" id="valContrast">0</span>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-label">Highlights</span>
+                        <input type="range" class="control-slider" id="sliderHighlights" min="-100" max="100" value="0" oninput="sliderChanged(this,'highlights','valHighlights')">
+                        <span class="control-value" id="valHighlights">0</span>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-label">Shadows</span>
+                        <input type="range" class="control-slider" id="sliderShadows" min="-100" max="100" value="0" oninput="sliderChanged(this,'shadows','valShadows')">
+                        <span class="control-value" id="valShadows">0</span>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-label">Whites</span>
+                        <input type="range" class="control-slider" id="sliderWhites" min="-100" max="100" value="0" oninput="sliderChanged(this,'whites','valWhites')">
+                        <span class="control-value" id="valWhites">0</span>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-label">Blacks</span>
+                        <input type="range" class="control-slider" id="sliderBlacks" min="-100" max="100" value="0" oninput="sliderChanged(this,'blacks','valBlacks')">
+                        <span class="control-value" id="valBlacks">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Color -->
+        <div class="rp-section">
+            <div class="rp-header" onclick="toggleRPSection('colorBody')">
+                Color <span class="chevron">▼</span>
+            </div>
+            <div class="collapsible" id="colorBody">
+                <div class="rp-body">
+                    <div class="control-row">
+                        <span class="control-label">Temperature</span>
+                        <input type="range" class="control-slider" id="sliderTemperature" min="-100" max="100" value="0" oninput="sliderChanged(this,'temperature','valTemperature')">
+                        <span class="control-value" id="valTemperature">0</span>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-label">Tint</span>
+                        <input type="range" class="control-slider" id="sliderTint" min="-100" max="100" value="0" oninput="sliderChanged(this,'tint','valTint')">
+                        <span class="control-value" id="valTint">0</span>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-label">Vibrance</span>
+                        <input type="range" class="control-slider" id="sliderVibrance" min="-100" max="100" value="0" oninput="sliderChanged(this,'vibrance','valVibrance')">
+                        <span class="control-value" id="valVibrance">0</span>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-label">Saturation</span>
+                        <input type="range" class="control-slider" id="sliderSaturation" min="-100" max="100" value="0" oninput="sliderChanged(this,'saturation','valSaturation')">
+                        <span class="control-value" id="valSaturation">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2383 Film Parameters -->
+        <div class="rp-section">
+            <div class="rp-header" onclick="toggleRPSection('filmBody')">
+                2383 Parameters <span class="chevron">▼</span>
+            </div>
+            <div class="collapsible" id="filmBody">
+                <div class="rp-body">
+                    <div class="split-tone-row">
+                        <div class="tone-swatch">
+                            <div class="tone-color" id="shadowSwatch" style="background:rgb(90,105,140);"></div>
+                            <span>Shadows</span>
+                        </div>
+                        <div class="tone-swatch">
+                            <div class="tone-color" id="highlightSwatch" style="background:rgb(255,238,195);"></div>
+                            <span>Highlights</span>
+                        </div>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-label">Black Lift</span>
+                        <input type="range" class="control-slider" id="sliderBlackLift" min="0" max="100" value="30" oninput="sliderChanged(this,'blackLift','valBlackLift')">
+                        <span class="control-value" id="valBlackLift">30</span>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-label">Orange Base</span>
+                        <input type="range" class="control-slider" id="sliderOrangeBase" min="0" max="100" value="25" oninput="sliderChanged(this,'orangeBase','valOrangeBase')">
+                        <span class="control-value" id="valOrangeBase">25</span>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-label">Shadow Tint</span>
+                        <input type="range" class="control-slider" id="sliderShadowTint" min="0" max="100" value="50" oninput="sliderChanged(this,'shadowTint','valShadowTint')">
+                        <span class="control-value" id="valShadowTint">50</span>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-label">Hl. Warmth</span>
+                        <input type="range" class="control-slider" id="sliderHlWarm" min="0" max="100" value="50" oninput="sliderChanged(this,'hlWarm','valHlWarm')">
+                        <span class="control-value" id="valHlWarm">50</span>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-label">Halation</span>
+                        <input type="range" class="control-slider" id="sliderHalation" min="0" max="100" value="20" oninput="sliderChanged(this,'halation','valHalation')">
+                        <span class="control-value" id="valHalation">20</span>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-label">Grain Amount</span>
+                        <input type="range" class="control-slider" id="sliderGrainAmount" min="0" max="100" value="20" oninput="sliderChanged(this,'grainAmount','valGrainAmount')">
+                        <span class="control-value" id="valGrainAmount">20</span>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-label">Grain Size</span>
+                        <input type="range" class="control-slider" id="sliderGrainSize" min="1" max="10" value="3" oninput="sliderChanged(this,'grainSize','valGrainSize')">
+                        <span class="control-value" id="valGrainSize">3</span>
+                    </div>
+                    <button class="topbar-btn" style="width:100%; margin-top:6px;" onclick="resetFilmParams()">Reset 2383 Defaults</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Export -->
+        <div class="rp-section">
+            <div class="rp-header" onclick="toggleRPSection('exportBody')">
+                Export <span class="chevron">▼</span>
+            </div>
+            <div class="collapsible" id="exportBody">
+                <div class="rp-body">
+                    <div class="control-row">
+                        <span class="control-label">Format</span>
+                        <select id="exportFormat" class="select-input">
+                            <option value="jpeg">JPEG</option>
+                            <option value="png">PNG</option>
+                            <option value="webp">WebP</option>
+                        </select>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-label">Quality</span>
+                        <input type="range" class="control-slider" id="sliderQuality" min="60" max="100" value="92" oninput="document.getElementById('valQuality').textContent=this.value">
+                        <span class="control-value" id="valQuality">92</span>
+                    </div>
+                    <button class="topbar-btn" style="width:100%; margin-top:2px;" onclick="exportCurrent()">Export Current</button>
+                    <button class="topbar-btn primary" style="width:100%; margin-top:6px;" onclick="exportAll()">Export All Photos</button>
+                </div>
+                <div class="export-progress" id="exportProgress">
+                    <div class="progress-bar-track">
+                        <div class="progress-bar-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text" id="progressText"></div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- end right-panel -->
+</div><!-- end main-layout -->
+
+<script src="app.js"></script>
+</body>
+</html>
