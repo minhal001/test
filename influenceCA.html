@@ -41,6 +41,9 @@ body {
     min-height: 100vh;
 }
 
+/* ============================================================
+   HEADER
+   ============================================================ */
 .header {
     background: var(--red);
     color: #fff;
@@ -50,6 +53,7 @@ body {
     z-index: 100;
     box-shadow: 0 2px 12px rgba(0,0,0,0.20);
 }
+
 .header-inner {
     max-width: 1400px;
     margin: 0 auto;
@@ -59,9 +63,18 @@ body {
     justify-content: space-between;
     gap: 16px;
 }
+
 .brand { display: flex; align-items: center; gap: 10px; }
+
 .brand-maple { font-size: 24px; line-height: 1; }
-.brand-name { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; color: #fff; }
+
+.brand-name {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: #fff;
+}
+
 .brand-tag {
     font-size: 11px;
     color: rgba(255,255,255,0.72);
@@ -69,6 +82,7 @@ body {
     padding-left: 10px;
     white-space: nowrap;
 }
+
 .stat-pill {
     background: rgba(255,255,255,0.22);
     color: #fff;
@@ -79,6 +93,9 @@ body {
     white-space: nowrap;
 }
 
+/* ============================================================
+   FILTERS BAR
+   ============================================================ */
 .filters-bar {
     background: var(--white);
     border-bottom: 1px solid var(--border);
@@ -88,6 +105,7 @@ body {
     z-index: 90;
     box-shadow: var(--shadow-sm);
 }
+
 .filters-inner {
     max-width: 1400px;
     margin: 0 auto;
@@ -96,101 +114,244 @@ body {
     gap: 10px;
     flex-wrap: wrap;
 }
-.search-wrap { position: relative; flex: 1; min-width: 220px; max-width: 380px; }
-.search-icon {
-    position: absolute; left: 11px; top: 50%; transform: translateY(-50%);
-    width: 16px; height: 16px; color: var(--text-dim); pointer-events: none;
+
+/* Search */
+.search-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 220px;
+    max-width: 380px;
 }
+
+.search-icon {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    color: var(--text-dim);
+    pointer-events: none;
+}
+
 .search-input {
-    width: 100%; height: 38px; padding: 0 34px 0 34px;
-    border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-    font-size: 13px; color: var(--text); background: var(--bg);
-    outline: none; transition: border-color 0.15s;
+    width: 100%;
+    height: 38px;
+    padding: 0 34px 0 34px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    color: var(--text);
+    background: var(--bg);
+    outline: none;
+    transition: border-color 0.15s;
 }
 .search-input:focus { border-color: var(--border-focus); background: #fff; }
 .search-input::placeholder { color: var(--text-dim); }
+
 .clear-btn {
-    position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
-    background: none; border: none; color: var(--text-dim); cursor: pointer;
-    font-size: 13px; padding: 4px; display: none; line-height: 1;
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-size: 13px;
+    padding: 4px;
+    display: none;
+    line-height: 1;
 }
 .clear-btn.visible { display: block; }
 .clear-btn:hover { color: var(--text); }
 
+/* Filter selects */
 .filter-select {
-    height: 38px; padding: 0 28px 0 10px;
-    border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-    font-size: 12.5px; color: var(--text);
+    height: 38px;
+    padding: 0 28px 0 10px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 12.5px;
+    color: var(--text);
     background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23aeaeb2'/%3E%3C/svg%3E") no-repeat right 10px center;
-    -webkit-appearance: none; appearance: none;
-    cursor: pointer; outline: none; transition: border-color 0.15s; white-space: nowrap;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.15s;
+    white-space: nowrap;
 }
 .filter-select:focus { border-color: var(--border-focus); }
 .filter-select.active { border-color: var(--red); background-color: var(--red-dim); color: var(--red); }
 
 .reset-btn {
-    height: 38px; padding: 0 16px;
-    background: transparent; border: 1.5px solid var(--border);
-    border-radius: var(--radius-sm); font-size: 12.5px; color: var(--text-sub);
-    cursor: pointer; white-space: nowrap; transition: all 0.14s;
+    height: 38px;
+    padding: 0 16px;
+    background: transparent;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 12.5px;
+    color: var(--text-sub);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.14s;
 }
 .reset-btn:hover { border-color: var(--red); color: var(--red); }
 
+/* ============================================================
+   CHIPS BAR
+   ============================================================ */
 .chips-bar {
-    max-width: 1400px; margin: 0 auto;
-    padding: 8px 20px 0; display: flex; flex-wrap: wrap; gap: 6px; min-height: 0;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 8px 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-height: 0;
 }
+
 .chip {
-    display: inline-flex; align-items: center; gap: 5px;
-    background: var(--red-dim); color: var(--red);
-    border: 1px solid rgba(213,43,30,0.25); padding: 3px 10px;
-    border-radius: 20px; font-size: 12px; font-weight: 500;
-    cursor: pointer; transition: background 0.12s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--red-dim);
+    color: var(--red);
+    border: 1px solid rgba(213,43,30,0.25);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.12s;
 }
 .chip:hover { background: rgba(213,43,30,0.20); }
 .chip .chip-x { font-size: 11px; opacity: 0.7; }
 
-.results-area { max-width: 1400px; margin: 0 auto; padding: 20px 20px 48px; }
-.results-header { font-size: 13px; color: var(--text-sub); margin-bottom: 16px; min-height: 20px; }
+/* ============================================================
+   RESULTS AREA
+   ============================================================ */
+.results-area {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 20px 48px;
+}
+
+.results-header {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin-bottom: 16px;
+    min-height: 20px;
+}
+
 .results-header strong { color: var(--text); }
 
+/* ============================================================
+   CARDS GRID
+   ============================================================ */
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 18px;
 }
 
+/* ---- Influencer Card ---- */
 .card {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 20px; cursor: pointer;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    cursor: pointer;
     transition: transform 0.16s, box-shadow 0.16s, border-color 0.16s;
-    position: relative; overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
-.card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: #d0d0d8; }
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: #d0d0d8;
+}
 
-.card-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
 .card-avatar {
-    width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; font-weight: 700; color: #fff;
-    background: var(--red); border: 2px solid var(--border);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--red);
+    border: 2px solid var(--border);
 }
+
 .card-info { flex: 1; min-width: 0; }
-.card-name { font-size: 15px; font-weight: 700; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.card-handle { font-size: 12.5px; color: var(--text-sub); margin-top: 1px; }
-.card-location { font-size: 11.5px; color: var(--text-dim); margin-top: 3px; display: flex; align-items: center; gap: 3px; }
 
-.card-niche {
-    position: absolute; top: 14px; right: 14px;
-    font-size: 10.5px; font-weight: 600; padding: 3px 9px;
-    border-radius: 20px; background: var(--bg); border: 1px solid var(--border);
-    color: var(--text-sub); white-space: nowrap;
+.card-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.card-platforms { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
+.card-handle {
+    font-size: 12.5px;
+    color: var(--text-sub);
+    margin-top: 1px;
+}
+
+.card-location {
+    font-size: 11.5px;
+    color: var(--text-dim);
+    margin-top: 3px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+/* Niche badge */
+.card-niche {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text-sub);
+    white-space: nowrap;
+}
+
+/* Platforms */
+.card-platforms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 14px;
+}
+
 .platform-tag {
-    display: inline-flex; align-items: center; gap: 4px;
-    font-size: 11.5px; padding: 3px 9px; border-radius: 6px; font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11.5px;
+    padding: 3px 9px;
+    border-radius: 6px;
+    font-weight: 500;
 }
 .platform-tag.instagram { background: #fce4ec; color: #c2185b; }
 .platform-tag.tiktok    { background: #e8f5e9; color: #2e7d32; }
@@ -199,83 +360,198 @@ body {
 .platform-tag.twitch    { background: #ede7f6; color: #4527a0; }
 .platform-tag.podcast   { background: #fff3e0; color: #e65100; }
 
-.card-stats { display: flex; gap: 4px; }
-.stat-box { flex: 1; background: var(--bg); border-radius: var(--radius-sm); padding: 8px 6px; text-align: center; }
-.stat-value { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1; }
-.stat-label { font-size: 10px; color: var(--text-dim); margin-top: 3px; }
-
-.card-bio {
-    font-size: 12.5px; color: var(--text-sub); margin-top: 12px; line-height: 1.5;
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+/* Stats row */
+.card-stats {
+    display: flex;
+    gap: 4px;
 }
 
+.stat-box {
+    flex: 1;
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    padding: 8px 6px;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: 3px;
+}
+
+/* Bio snippet */
+.card-bio {
+    font-size: 12.5px;
+    color: var(--text-sub);
+    margin-top: 12px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Engagement pill on card */
 .engagement-pill {
-    display: inline-flex; align-items: center; gap: 4px;
-    margin-top: 10px; font-size: 11px; font-weight: 600;
-    padding: 3px 9px; border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
 }
 .engagement-pill.high   { background: #e8f5e9; color: #2e7d32; }
 .engagement-pill.medium { background: #fff9c4; color: #f57f17; }
 .engagement-pill.low    { background: #fce4ec; color: #c62828; }
 
-.no-results { text-align: center; padding: 80px 20px; color: var(--text-sub); }
+/* ============================================================
+   NO RESULTS
+   ============================================================ */
+.no-results {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--text-sub);
+}
 .no-results-icon { font-size: 48px; margin-bottom: 14px; }
 .no-results-text { font-size: 16px; margin-bottom: 20px; color: var(--text-sub); }
 
+/* ============================================================
+   MODAL
+   ============================================================ */
 .modal-overlay {
-    display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,0.55); z-index: 200;
-    align-items: center; justify-content: center;
-    padding: 20px; backdrop-filter: blur(4px);
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(4px);
 }
 .modal-overlay.open { display: flex; }
+
 .modal {
-    background: var(--white); border-radius: 16px; box-shadow: var(--shadow-lg);
-    max-width: 560px; width: 100%; max-height: 90vh; overflow-y: auto;
-    position: relative; animation: modalIn 0.22s ease;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    max-width: 560px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalIn 0.22s ease;
 }
+
 @keyframes modalIn {
     from { opacity: 0; transform: scale(0.95) translateY(10px); }
     to   { opacity: 1; transform: scale(1) translateY(0); }
 }
+
 .modal-close {
-    position: absolute; top: 14px; right: 14px;
-    width: 32px; height: 32px; border-radius: 50%;
-    border: 1.5px solid var(--border); background: var(--bg);
-    cursor: pointer; font-size: 14px; color: var(--text-sub);
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.12s; z-index: 1; line-height: 1;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: var(--bg);
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-sub);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.12s;
+    z-index: 1;
+    line-height: 1;
 }
 .modal-close:hover { background: var(--red-dim); border-color: var(--red); color: var(--red); }
+
 .modal-body { padding: 28px; }
-.modal-hero { display: flex; align-items: center; gap: 18px; margin-bottom: 24px; }
-.modal-avatar {
-    width: 76px; height: 76px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 30px; font-weight: 700; color: #fff; flex-shrink: 0;
+
+.modal-hero {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 24px;
 }
+
+.modal-avatar {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+}
+
 .modal-name { font-size: 22px; font-weight: 800; color: var(--text); }
 .modal-handle { font-size: 14px; color: var(--text-sub); margin-top: 2px; }
 .modal-location { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+
 .modal-section-title {
-    font-size: 11px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.8px; color: var(--text-dim);
-    margin-bottom: 10px; margin-top: 22px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+    margin-top: 22px;
 }
-.modal-bio { font-size: 14px; color: var(--text-sub); line-height: 1.65; }
-.modal-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+
+.modal-bio {
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 1.65;
+}
+
+.modal-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
 .modal-stat {
-    background: var(--bg); border-radius: var(--radius-sm);
-    padding: 12px; text-align: center; border: 1px solid var(--border);
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    text-align: center;
+    border: 1px solid var(--border);
 }
+
 .modal-stat-value { font-size: 18px; font-weight: 800; color: var(--text); }
 .modal-stat-label { font-size: 11px; color: var(--text-dim); margin-top: 3px; }
+
 .modal-platforms { display: flex; flex-wrap: wrap; gap: 8px; }
+
 .modal-platform-btn {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 7px 14px; border-radius: var(--radius-sm);
-    font-size: 13px; font-weight: 600; text-decoration: none;
-    border: 1.5px solid transparent; cursor: pointer; transition: opacity 0.13s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: opacity 0.13s;
 }
 .modal-platform-btn:hover { opacity: 0.8; }
 .modal-platform-btn.instagram { background: #fce4ec; color: #c2185b; border-color: #f8bbd0; }
@@ -284,19 +560,39 @@ body {
 .modal-platform-btn.x         { background: #e3f2fd; color: #1565c0; border-color: #bbdefb; }
 .modal-platform-btn.twitch    { background: #ede7f6; color: #4527a0; border-color: #d1c4e9; }
 .modal-platform-btn.podcast   { background: #fff3e0; color: #e65100; border-color: #ffe0b2; }
+
 .modal-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
 .modal-tag {
-    font-size: 12px; padding: 4px 12px; border-radius: 20px;
-    background: var(--bg); border: 1px solid var(--border); color: var(--text-sub);
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text-sub);
 }
+
 .contact-btn {
-    display: block; width: 100%; margin-top: 24px; padding: 13px;
-    background: var(--red); color: #fff; border: none;
-    border-radius: var(--radius-sm); font-size: 14px; font-weight: 700;
-    cursor: pointer; text-align: center; transition: background 0.14s; letter-spacing: 0.2px;
+    display: block;
+    width: 100%;
+    margin-top: 24px;
+    padding: 13px;
+    background: var(--red);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.14s;
+    letter-spacing: 0.2px;
 }
 .contact-btn:hover { background: var(--red-light); }
 
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 @media (max-width: 768px) {
     .brand-tag { display: none; }
     .filters-inner { gap: 8px; }
@@ -304,18 +600,22 @@ body {
     .filter-select { flex: 1; min-width: 120px; font-size: 12px; }
     .cards-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
     .results-area { padding: 14px 14px 40px; }
+    .modal-stats-grid { grid-template-columns: repeat(3, 1fr); }
     .modal-body { padding: 20px; }
 }
+
 @media (max-width: 480px) {
     .header-stats { display: none; }
     .cards-grid { grid-template-columns: 1fr; }
     .modal-stats-grid { grid-template-columns: repeat(2, 1fr); }
     .filter-select { font-size: 11.5px; }
 }
-    </style>
+
+</style>
 </head>
 <body>
 
+<!-- Header -->
 <header class="header">
     <div class="header-inner">
         <div class="brand">
@@ -329,13 +629,18 @@ body {
     </div>
 </header>
 
+<!-- Search & Filters -->
 <div class="filters-bar">
     <div class="filters-inner">
+
+        <!-- Search -->
         <div class="search-wrap">
             <svg class="search-icon" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.8"/><line x1="12.8" y1="12.8" x2="17" y2="17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
             <input type="text" id="searchInput" class="search-input" placeholder="Search by name, handle, or keyword…" oninput="applyFilters()">
             <button class="clear-btn" id="clearSearch" onclick="clearSearch()" title="Clear search">&#10005;</button>
         </div>
+
+        <!-- Province -->
         <select id="filterProvince" class="filter-select" onchange="applyFilters()">
             <option value="">All Provinces</option>
             <option value="AB">Alberta</option>
@@ -349,6 +654,13 @@ body {
             <option value="QC">Québec</option>
             <option value="SK">Saskatchewan</option>
         </select>
+
+        <!-- City -->
+        <select id="filterCity" class="filter-select" onchange="applyFilters()">
+            <option value="">All Cities</option>
+        </select>
+
+        <!-- Niche -->
         <select id="filterNiche" class="filter-select" onchange="applyFilters()">
             <option value="">All Niches</option>
             <option value="Lifestyle">Lifestyle</option>
@@ -367,6 +679,8 @@ body {
             <option value="Business">Business</option>
             <option value="Sports">Sports</option>
         </select>
+
+        <!-- Platform -->
         <select id="filterPlatform" class="filter-select" onchange="applyFilters()">
             <option value="">All Platforms</option>
             <option value="Instagram">Instagram</option>
@@ -376,6 +690,8 @@ body {
             <option value="Twitch">Twitch</option>
             <option value="Podcast">Podcast</option>
         </select>
+
+        <!-- Followers -->
         <select id="filterSize" class="filter-select" onchange="applyFilters()">
             <option value="">Any Size</option>
             <option value="nano">Nano (&lt;10K)</option>
@@ -384,18 +700,23 @@ body {
             <option value="macro">Macro (500K–1M)</option>
             <option value="mega">Mega (1M+)</option>
         </select>
+
+        <!-- Sort -->
         <select id="sortBy" class="filter-select" onchange="applyFilters()">
             <option value="followers_desc">Most Followers</option>
             <option value="followers_asc">Fewest Followers</option>
             <option value="engagement_desc">Best Engagement</option>
             <option value="name_asc">Name A–Z</option>
         </select>
+
         <button class="reset-btn" onclick="resetFilters()">Reset</button>
     </div>
 </div>
 
+<!-- Active filter chips -->
 <div class="chips-bar" id="chipsBar"></div>
 
+<!-- Results area -->
 <main class="results-area">
     <div class="results-header" id="resultsHeader"></div>
     <div class="cards-grid" id="cardsGrid"></div>
@@ -406,6 +727,7 @@ body {
     </div>
 </main>
 
+<!-- Detail Modal -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
     <div class="modal" id="modal">
         <button class="modal-close" onclick="closeModalDirect()">&#10005;</button>
@@ -419,8 +741,8 @@ body {
 // ============================================================
 
 function fmtFollowers(n) {
-    if (n >= 1000000) return (n / 1000000).toFixed(n >= 10000000 ? 0 : 1) + 'M';
-    if (n >= 1000)    return (n / 1000).toFixed(n >= 100000 ? 0 : 1) + 'K';
+    if (n >= 1_000_000) return (n / 1_000_000).toFixed(n >= 10_000_000 ? 0 : 1) + 'M';
+    if (n >= 1_000)     return (n / 1_000).toFixed(n >= 100_000 ? 0 : 1) + 'K';
     return n.toString();
 }
 function engagementLabel(rate) {
@@ -430,51 +752,821 @@ function engagementLabel(rate) {
 }
 function engagementText(rate) { return rate.toFixed(1) + '% Engagement'; }
 function sizeCategory(followers) {
-    if (followers < 10000)   return 'nano';
-    if (followers < 100000)  return 'micro';
-    if (followers < 500000)  return 'mid';
-    if (followers < 1000000) return 'macro';
+    if (followers < 10_000)    return 'nano';
+    if (followers < 100_000)   return 'micro';
+    if (followers < 500_000)   return 'mid';
+    if (followers < 1_000_000) return 'macro';
     return 'mega';
 }
 function initials(name) { return name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase(); }
-const AVATAR_COLORS = ['#d52b1e','#2979ff','#00897b','#7b1fa2','#f57c00','#0277bd','#558b2f','#ad1457','#00695c','#283593'];
+
+const AVATAR_COLORS = [
+    '#d52b1e','#2979ff','#00897b','#7b1fa2','#f57c00',
+    '#0277bd','#558b2f','#ad1457','#00695c','#283593',
+    '#6d4c41','#37474f','#c0392b','#16a085','#8e44ad',
+];
 function avatarColor(id) { return AVATAR_COLORS[id % AVATAR_COLORS.length]; }
-const PLATFORM_ICONS = { Instagram:'📸', TikTok:'🎵', YouTube:'▶️', X:'🐦', Twitch:'🎮', Podcast:'🎙️' };
+
+const PLATFORM_ICONS = {
+    Instagram: '📸', TikTok: '🎵', YouTube: '▶️',
+    X: '🐦', Twitch: '🎮', Podcast: '🎙️',
+};
+
+// ---- Dataset ----
 
 const INFLUENCERS = [
-    { id:1,  name:'Sophie Tremblay',   handle:'@sophietremblay',   province:'QC', city:'Montréal',      niche:'Fashion',  platforms:['Instagram','TikTok'],             followers:820000,   engagement:4.8, bio:'Fashion & lifestyle créatrice based in Montréal. Bilingual content celebrating Canadian style, sustainable brands, and city culture. Partenariats / partnerships welcome.', tags:['Sustainable Fashion','Bilingual','Street Style','Quebec'], collab:true },
-    { id:2,  name:'Liam Mackenzie',    handle:'@liamoutdoors',      province:'BC', city:'Vancouver',     niche:'Outdoors', platforms:['YouTube','Instagram'],            followers:510000,   engagement:6.1, bio:'Hiking, kayaking, and backcountry adventures across British Columbia and the Canadian Rockies. Gear reviews, trail guides, and conservation advocacy.', tags:['Hiking','Gear Review','Conservation','BC Parks'], collab:true },
-    { id:3,  name:'Priya Sharma',      handle:'@priya.eats',        province:'ON', city:'Toronto',       niche:'Food',     platforms:['Instagram','TikTok','YouTube'],   followers:290000,   engagement:7.2, bio:"Toronto-based food creator exploring the city's wildly diverse restaurant scene. From Scarborough roti to Yorkville tasting menus — every cuisine, every budget.", tags:['Toronto Food','Restaurant Reviews','Diverse Cuisine','Foodie'], collab:true },
-    { id:4,  name:'Jordan Rivers',     handle:'@jordanrivers',      province:'ON', city:'Toronto',       niche:'Tech',     platforms:['YouTube','X','Podcast'],          followers:1450000,  engagement:3.5, bio:'Canadian tech journalist and creator. Weekly deep dives on AI, startups, and consumer gadgets. Host of "North of Silicon" podcast, covering Canada\'s growing tech ecosystem.', tags:['AI','Startups','Gadgets','Podcast Host'], collab:false },
-    { id:5,  name:'Camille Bouchard',  handle:'@camille.fitness',   province:'QC', city:'Québec City',   niche:'Fitness',  platforms:['Instagram','TikTok'],             followers:180000,   engagement:8.4, bio:'Certified personal trainer and nutritionist from Québec City. Strength training, HIIT, and mindful eating — approachable wellness for everyday Canadians.', tags:['Personal Training','Nutrition','Strength','Wellness'], collab:true },
-    { id:6,  name:'Marcus Osei',       handle:'@marcusosei',        province:'ON', city:'Toronto',       niche:'Music',    platforms:['Instagram','TikTok','YouTube'],   followers:670000,   engagement:5.9, bio:"Toronto-based R&B & Afrobeats musician and producer. Behind-the-scenes studio content, live performances, and collabs with the best in Canada's music scene.", tags:['R&B','Afrobeats','Music Production','Live Performance'], collab:true },
-    { id:7,  name:'Annika Johansson',  handle:'@annikatravel',      province:'AB', city:'Calgary',       niche:'Travel',   platforms:['Instagram','YouTube'],            followers:420000,   engagement:4.2, bio:'Calgary-based travel creator focusing on unique Canadian destinations and off-the-beaten-path international adventures. Banff to Bali, always with a budget-friendly twist.', tags:['Canadian Travel','Budget Travel','Adventure','Alberta'], collab:true },
-    { id:8,  name:'Étienne Gagnon',    handle:'@etienne.lifestyle', province:'QC', city:'Montréal',      niche:'Lifestyle',platforms:['Instagram','TikTok'],             followers:95000,    engagement:9.1, bio:'Montréal lifestyle creator documenting city living, coffee shop culture, interior design, and the art of slow mornings. Aesthetic content with a Québécois soul.', tags:['Montreal','Interior Design','Coffee','Slow Living'], collab:true },
-    { id:9,  name:'Riley Chen',        handle:'@rileyplays',        province:'BC', city:'Vancouver',     niche:'Gaming',   platforms:['Twitch','YouTube','TikTok'],      followers:2100000,  engagement:2.8, bio:'Full-time streamer and content creator. Competitive FPS, RPG deep dives, and a lot of chaotic Just Chatting. Based in Vancouver, streaming since 2018.', tags:['FPS','RPG','Streaming','Esports'], collab:true },
-    { id:10, name:'Isabelle Côté',     handle:'@isabellebeauty',    province:'QC', city:'Montréal',      niche:'Beauty',   platforms:['Instagram','YouTube','TikTok'],   followers:760000,   engagement:6.5, bio:'Bilingual beauty creator specializing in skincare, makeup tutorials, and honest reviews. Advocating for inclusive beauty and cruelty-free products from Montréal.', tags:['Skincare','Makeup','Cruelty-Free','Bilingual'], collab:true },
-    { id:11, name:'Noah Belanger',     handle:'@noahfinance',       province:'ON', city:'Ottawa',        niche:'Finance',  platforms:['YouTube','X','Podcast'],          followers:320000,   engagement:4.4, bio:'Canadian personal finance educator helping millennials and Gen Z build wealth. TFSA, RRSP, real estate, and investing — explained simply from Ottawa.', tags:['TFSA','RRSP','Investing','Real Estate'], collab:false },
-    { id:12, name:'Mei-Ling Park',     handle:'@meilingparenting',  province:'BC', city:'Burnaby',       niche:'Parenting',platforms:['Instagram','YouTube'],            followers:88000,    engagement:7.8, bio:'Mom of three sharing authentic parenting moments, multicultural family life, and gentle parenting tips from the Lower Mainland. Real talk, real kids, real chaos.', tags:['Gentle Parenting','Multicultural','Family Life','BC Family'], collab:true },
-    { id:13, name:'Derek Fontaine',    handle:'@derekcomedyca',     province:'ON', city:'Toronto',       niche:'Comedy',   platforms:['TikTok','Instagram','YouTube'],   followers:1800000,  engagement:5.2, bio:'Stand-up comedian and sketch writer from Toronto. Viral short-form comedy skits poking fun at Canadian culture, Toronto life, and relatable millennial struggles.', tags:['Stand-Up','Sketch Comedy','Canadian Humour','Viral'], collab:true },
-    { id:14, name:'Fatima Al-Hassan',  handle:'@fatimastyle',       province:'ON', city:'Mississauga',   niche:'Fashion',  platforms:['Instagram','TikTok'],             followers:240000,   engagement:7.0, bio:'Modest fashion influencer and stylist based in Mississauga. Helping women dress confidently and stylishly for any occasion. Representation matters.', tags:['Modest Fashion','Styling','Inclusivity','GTA'], collab:true },
-    { id:15, name:'Tyler Kowalski',    handle:'@tylerkowalski',     province:'AB', city:'Edmonton',      niche:'Sports',   platforms:['Instagram','YouTube','X'],        followers:190000,   engagement:5.7, bio:'Edmonton Oilers super fan, hockey analyst, and sports content creator. Game breakdowns, fantasy hockey tips, and live reactions to every Oilers game.', tags:['Hockey','Oilers','Sports Analysis','Fantasy Sports'], collab:true },
-    { id:16, name:'Vanessa Nguyen',    handle:'@vanessalifestyle',  province:'BC', city:'Victoria',      niche:'Lifestyle',platforms:['Instagram','TikTok'],             followers:52000,    engagement:9.8, bio:'Victoria-based lifestyle creator celebrating the beauty of slow living on Vancouver Island. Cozy aesthetics, wellness routines, and the best spots in the Capital Region.', tags:['Vancouver Island','Slow Living','Wellness','Victoria'], collab:true },
-    { id:17, name:'Samuel Dubois',     handle:'@samduboistech',     province:'QC', city:'Montréal',      niche:'Tech',     platforms:['YouTube','X'],                    followers:78000,    engagement:5.3, bio:"Montréal-based developer and tech creator. Tutorials on web development, open source projects, and a weekly deep dive into what's happening in Canadian tech startups.", tags:['Web Dev','Open Source','Startups','Montréal Tech'], collab:true },
-    { id:18, name:'Grace Okonkwo',     handle:'@graceokonkwo',      province:'ON', city:'Brampton',      niche:'Beauty',   platforms:['TikTok','Instagram','YouTube'],   followers:450000,   engagement:6.9, bio:'Beauty educator and brand consultant from Brampton. Expert in melanin-rich skin tones with tutorials that celebrate and serve the diversity of Canadian beauty.', tags:['Melanin Beauty','Skincare','Brand Consulting','Diversity'], collab:true },
-    { id:19, name:'Alex Cormier',      handle:'@alexoutdoors',      province:'NS', city:'Halifax',       niche:'Outdoors', platforms:['Instagram','YouTube'],            followers:36000,    engagement:10.2,bio:"Halifax-based outdoor enthusiast documenting Nova Scotia's hidden trails, sea kayaking routes, and wild Atlantic coastline. Come explore Atlantic Canada.", tags:['Nova Scotia','Sea Kayaking','Atlantic Canada','Trails'], collab:true },
-    { id:20, name:'Jessica Lavoie',    handle:'@jessfoodie',        province:'AB', city:'Calgary',       niche:'Food',     platforms:['Instagram','TikTok'],             followers:130000,   engagement:8.0, bio:'Calgary food blogger and recipe developer specializing in elevated comfort food with Canadian ingredients. From Alberta beef to Prairie grain bowls.', tags:['Recipe Development','Alberta Beef','Comfort Food','Calgary Eats'], collab:true },
-    { id:21, name:'Ben Tripp',         handle:'@bentrippbiz',       province:'ON', city:'Toronto',       niche:'Business', platforms:['X','Podcast','YouTube'],          followers:205000,   engagement:3.9, bio:'Serial entrepreneur and angel investor based in Toronto. Sharing startup lessons, Canadian business news, and unfiltered takes on building companies from scratch.', tags:['Entrepreneurship','Angel Investing','Startups','Business'], collab:false },
-    { id:22, name:'Hana Kimura',       handle:'@hanafitness',       province:'BC', city:'Vancouver',     niche:'Fitness',  platforms:['Instagram','TikTok','YouTube'],   followers:390000,   engagement:7.4, bio:'Vancouver fitness coach and movement specialist. Pilates, yoga flow, and mobility work for active Canadians. Evidence-based approach to feeling strong and moving well.', tags:['Pilates','Yoga','Mobility','Evidence-Based'], collab:true },
-    { id:23, name:'Chloe Landry',      handle:'@chloetravels',      province:'NB', city:'Moncton',       niche:'Travel',   platforms:['Instagram','TikTok'],             followers:67000,    engagement:8.6, bio:'Bilingual travel creator from Moncton exploring the Maritime provinces and beyond. Hidden gems of New Brunswick, PEI, and Nova Scotia — featuring local businesses.', tags:['Maritimes','Bilingual','Hidden Gems','Local Business'], collab:true },
-    { id:24, name:'Omar Habib',        handle:'@omarhabibcomedy',   province:'ON', city:'Toronto',       niche:'Comedy',   platforms:['TikTok','Instagram'],             followers:920000,   engagement:6.3, bio:'Comedian and writer from Toronto. Hilarious skits about Canadian immigrant life, multicultural Toronto, and the universal chaos of adulthood.', tags:['Immigrant Life','Multicultural','Toronto','Sketch'], collab:true },
-    { id:25, name:'Brianna Wolf',      handle:'@briannawolf',       province:'MB', city:'Winnipeg',      niche:'Lifestyle',platforms:['Instagram','TikTok'],             followers:44000,    engagement:9.5, bio:'Winnipeg-based lifestyle creator bringing Prairie vibes to your feed. Home décor, seasonal recipes, small business spotlights, and honest takes on life in the Peg.', tags:['Winnipeg','Prairie Life','Home Décor','Small Business'], collab:true },
+
+    // ── KELOWNA & OKANAGAN ─────────────────────────────────────
+    {
+        id: 101,
+        name: 'Megan Hollis',
+        handle: '@meganhollis_kelowna',
+        province: 'BC', city: 'Kelowna',
+        niche: 'Lifestyle',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 62000, engagement: 9.4,
+        bio: 'Kelowna lifestyle creator celebrating Okanagan living — wine country, lake days, farmers markets, and the best local spots. Proudly rooted in the heart of BC.',
+        tags: ['Okanagan', 'Wine Country', 'Lake Life', 'Local Kelowna'],
+        collab: true,
+    },
+    {
+        id: 102,
+        name: 'Travis Boyle',
+        handle: '@travisboyle_ok',
+        province: 'BC', city: 'Kelowna',
+        niche: 'Outdoors',
+        platforms: ['YouTube', 'Instagram'],
+        followers: 48000, engagement: 8.7,
+        bio: 'Okanagan outdoor guide and content creator. Hiking Knox Mountain, mountain biking Myra Canyon, and paddleboarding Okanagan Lake. Your local adventure resource.',
+        tags: ['Knox Mountain', 'Myra Canyon', 'Okanagan Lake', 'Mountain Biking'],
+        collab: true,
+    },
+    {
+        id: 103,
+        name: 'Sophia Winery',
+        handle: '@sophiaokanagan',
+        province: 'BC', city: 'Kelowna',
+        niche: 'Food',
+        platforms: ['Instagram', 'TikTok', 'YouTube'],
+        followers: 55000, engagement: 10.1,
+        bio: 'Wine & food creator based in Kelowna. Touring every winery on the Naramata Bench, West Kelowna wine trail, and beyond. Tasting notes, pairings, and vineyard tours.',
+        tags: ['Okanagan Wine', 'Naramata Bench', 'Wine Tasting', 'Vineyard Tours'],
+        collab: true,
+    },
+    {
+        id: 104,
+        name: 'Dylan Park',
+        handle: '@dylanpark_kelowna',
+        province: 'BC', city: 'Kelowna',
+        niche: 'Fitness',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 29000, engagement: 11.2,
+        bio: 'Personal trainer and competitive cyclist in Kelowna. Outdoor training, cycling routes through the Okanagan Valley, and nutrition tips built for an active BC lifestyle.',
+        tags: ['Cycling', 'Personal Training', 'Okanagan Fitness', 'Outdoor Workouts'],
+        collab: true,
+    },
+    {
+        id: 105,
+        name: 'Amber Tse',
+        handle: '@ambertse_ok',
+        province: 'BC', city: 'Kelowna',
+        niche: 'Travel',
+        platforms: ['Instagram', 'YouTube'],
+        followers: 41000, engagement: 8.3,
+        bio: 'Travel & local tourism creator from Kelowna. Showcasing the Okanagan\'s best-kept secrets — from Osoyoos beaches to Vernon\'s Silver Star ski resort and everything between.',
+        tags: ['Okanagan Tourism', 'Silver Star', 'Osoyoos', 'BC Travel'],
+        collab: true,
+    },
+    {
+        id: 106,
+        name: 'Cody Reimer',
+        handle: '@codyreimer',
+        province: 'BC', city: 'Kelowna',
+        niche: 'Tech',
+        platforms: ['YouTube', 'X', 'Podcast'],
+        followers: 22000, engagement: 7.6,
+        bio: 'Tech entrepreneur and startup founder in Kelowna. Covering BC\'s emerging tech scene outside Vancouver, remote work culture, and building software companies in smaller cities.',
+        tags: ['BC Tech', 'Startups', 'Remote Work', 'Kelowna Business'],
+        collab: true,
+    },
+    {
+        id: 107,
+        name: 'Paige Ellison',
+        handle: '@paigeellison_ok',
+        province: 'BC', city: 'Kelowna',
+        niche: 'Fashion',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 35000, engagement: 9.8,
+        bio: 'Kelowna-based fashion and style creator. Laid-back West Coast aesthetics, local boutique finds, and seasonal looks inspired by Okanagan lake and mountain vibes.',
+        tags: ['West Coast Style', 'Boutique Fashion', 'Okanagan Aesthetic', 'Local Shopping'],
+        collab: true,
+    },
+    {
+        id: 108,
+        name: 'Marcus Vien',
+        handle: '@marcusvien',
+        province: 'BC', city: 'Kelowna',
+        niche: 'Food',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 38000, engagement: 10.5,
+        bio: 'Kelowna food blogger and restaurant reviewer. From downtown Kelowna\'s top dining spots to hidden Okanagan farm-to-table gems. Supporting local chefs and producers.',
+        tags: ['Kelowna Restaurants', 'Farm-to-Table', 'Local Food', 'Okanagan Dining'],
+        collab: true,
+    },
+    {
+        id: 109,
+        name: 'Rachel Forde',
+        handle: '@rachelforde_kelowna',
+        province: 'BC', city: 'Kelowna',
+        niche: 'Beauty',
+        platforms: ['Instagram', 'TikTok', 'YouTube'],
+        followers: 27000, engagement: 9.1,
+        bio: 'Beauty creator and esthetician from Kelowna. Skincare routines for the dry Okanagan climate, makeup tutorials, and honest reviews of beauty brands available in BC.',
+        tags: ['Skincare', 'Okanagan Beauty', 'Esthetician', 'Dry Climate Skincare'],
+        collab: true,
+    },
+    {
+        id: 110,
+        name: 'Nate Burrows',
+        handle: '@nateburrows_ski',
+        province: 'BC', city: 'Kelowna',
+        niche: 'Sports',
+        platforms: ['Instagram', 'YouTube', 'TikTok'],
+        followers: 53000, engagement: 8.9,
+        bio: 'Ski and snowboard content creator based in Kelowna. Big White, Sun Peaks, Apex Mountain — covering every ski resort within the Okanagan and interior BC with expert reviews.',
+        tags: ['Big White', 'Skiing', 'Snowboarding', 'Interior BC'],
+        collab: true,
+    },
+    {
+        id: 111,
+        name: 'Leila Ahmadi',
+        handle: '@leila_oklifestyle',
+        province: 'BC', city: 'Kelowna',
+        niche: 'Parenting',
+        platforms: ['Instagram', 'YouTube'],
+        followers: 19000, engagement: 11.8,
+        bio: 'Kelowna mom of two sharing family life in the Okanagan — the best kid-friendly beaches, orchards, activities, and raising a family in one of Canada\'s most beautiful regions.',
+        tags: ['Okanagan Family', 'Kid-Friendly', 'Orchards', 'BC Family Life'],
+        collab: true,
+    },
+    {
+        id: 112,
+        name: 'Josh Faber',
+        handle: '@joshfaber_realestate',
+        province: 'BC', city: 'Kelowna',
+        niche: 'Business',
+        platforms: ['Instagram', 'YouTube', 'X'],
+        followers: 31000, engagement: 7.2,
+        bio: 'Kelowna real estate investor and market analyst. Covering Okanagan property trends, investment opportunities, and what\'s driving one of Canada\'s fastest-growing real estate markets.',
+        tags: ['Kelowna Real Estate', 'Property Investment', 'Okanagan Market', 'BC Housing'],
+        collab: true,
+    },
+    {
+        id: 113,
+        name: 'Haley Sunberg',
+        handle: '@haleysunberg',
+        province: 'BC', city: 'Kelowna',
+        niche: 'Lifestyle',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 44000, engagement: 9.7,
+        bio: 'Sun-soaked lifestyle content from Kelowna. Okanagan beach season, local events, orchard picks, and the authentic small-city big-life experience that makes Kelowna special.',
+        tags: ['Beach Life', 'Okanagan Summer', 'Local Events', 'Kelowna Community'],
+        collab: true,
+    },
+    {
+        id: 114,
+        name: 'Owen Chartrand',
+        handle: '@owenchartrand_photo',
+        province: 'BC', city: 'Kelowna',
+        niche: 'Outdoors',
+        platforms: ['Instagram', 'YouTube'],
+        followers: 66000, engagement: 8.1,
+        bio: 'Landscape photographer and outdoor creator from Kelowna. Capturing the raw beauty of the Okanagan Valley — vineyards, desert landscapes, mountain trails, and Okanagan Lake at golden hour.',
+        tags: ['Landscape Photography', 'Okanagan Valley', 'Nature Photography', 'Golden Hour'],
+        collab: true,
+    },
+    {
+        id: 115,
+        name: 'Tara Minhas',
+        handle: '@taraminhas_wellness',
+        province: 'BC', city: 'Kelowna',
+        niche: 'Fitness',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 24000, engagement: 10.9,
+        bio: 'Yoga instructor and wellness coach in Kelowna. Outdoor yoga sessions with vineyard views, mindfulness practices, and holistic health tips designed for the Okanagan lifestyle.',
+        tags: ['Yoga', 'Wellness', 'Outdoor Yoga', 'Okanagan Wellness'],
+        collab: true,
+    },
+    {
+        id: 116,
+        name: 'Brett Calloway',
+        handle: '@brettcalloway_ok',
+        province: 'BC', city: 'West Kelowna',
+        niche: 'Food',
+        platforms: ['Instagram', 'TikTok', 'YouTube'],
+        followers: 33000, engagement: 9.3,
+        bio: 'West Kelowna food and wine creator. Covering the West Kelowna wine trail, Boucherie Road wineries, and the growing culinary scene on the west side of Okanagan Lake.',
+        tags: ['West Kelowna', 'Boucherie Road', 'Okanagan Wine', 'Culinary'],
+        collab: true,
+    },
+    {
+        id: 117,
+        name: 'Nina Kostadinova',
+        handle: '@nina_penticton',
+        province: 'BC', city: 'Penticton',
+        niche: 'Travel',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 28000, engagement: 10.2,
+        bio: 'Penticton-based travel and lifestyle creator. Two lakes, endless beaches, Ironman events, and the best cycling routes in the South Okanagan. Living the Penticton dream.',
+        tags: ['Penticton', 'South Okanagan', 'Two Lakes', 'Ironman'],
+        collab: true,
+    },
+    {
+        id: 118,
+        name: 'Cole Radford',
+        handle: '@coleradford_vernon',
+        province: 'BC', city: 'Vernon',
+        niche: 'Sports',
+        platforms: ['Instagram', 'YouTube'],
+        followers: 21000, engagement: 9.6,
+        bio: 'Vernon-based athlete and content creator. Hockey, skiing at Silver Star, hiking Ellison Provincial Park, and celebrating everything North Okanagan has to offer year-round.',
+        tags: ['Vernon', 'Silver Star', 'North Okanagan', 'Hockey'],
+        collab: true,
+    },
+
+    // ── VANCOUVER & LOWER MAINLAND ─────────────────────────────
+    {
+        id: 2,
+        name: 'Liam Mackenzie',
+        handle: '@liamoutdoors',
+        province: 'BC', city: 'Vancouver',
+        niche: 'Outdoors',
+        platforms: ['YouTube', 'Instagram'],
+        followers: 510000, engagement: 6.1,
+        bio: 'Hiking, kayaking, and backcountry adventures across British Columbia and the Canadian Rockies. Gear reviews, trail guides, and conservation advocacy.',
+        tags: ['Hiking', 'Gear Review', 'Conservation', 'BC Parks'],
+        collab: true,
+    },
+    {
+        id: 9,
+        name: 'Riley Chen',
+        handle: '@rileyplays',
+        province: 'BC', city: 'Vancouver',
+        niche: 'Gaming',
+        platforms: ['Twitch', 'YouTube', 'TikTok'],
+        followers: 2_100_000, engagement: 2.8,
+        bio: 'Full-time streamer and content creator. Competitive FPS, RPG deep dives, and a lot of chaotic Just Chatting. Based in Vancouver, streaming since 2018.',
+        tags: ['FPS', 'RPG', 'Streaming', 'Esports'],
+        collab: true,
+    },
+    {
+        id: 22,
+        name: 'Hana Kimura',
+        handle: '@hanafitness',
+        province: 'BC', city: 'Vancouver',
+        niche: 'Fitness',
+        platforms: ['Instagram', 'TikTok', 'YouTube'],
+        followers: 390000, engagement: 7.4,
+        bio: 'Vancouver fitness coach and movement specialist. Pilates, yoga flow, and mobility work for active Canadians. Evidence-based approach to feeling strong and moving well.',
+        tags: ['Pilates', 'Yoga', 'Mobility', 'Evidence-Based'],
+        collab: true,
+    },
+    {
+        id: 201,
+        name: 'Jasmine Wu',
+        handle: '@jasminewu_van',
+        province: 'BC', city: 'Vancouver',
+        niche: 'Food',
+        platforms: ['Instagram', 'TikTok', 'YouTube'],
+        followers: 185000, engagement: 8.2,
+        bio: 'Vancouver food creator specializing in Asian cuisine, dim sum crawls, and the city\'s incredible multicultural dining scene. From Richmond night markets to Gastown fine dining.',
+        tags: ['Dim Sum', 'Asian Cuisine', 'Richmond', 'Vancouver Eats'],
+        collab: true,
+    },
+    {
+        id: 202,
+        name: 'Tyler Moss',
+        handle: '@tylermoss_van',
+        province: 'BC', city: 'Vancouver',
+        niche: 'Lifestyle',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 97000, engagement: 7.9,
+        bio: 'Vancouver lifestyle creator documenting the city\'s outdoor-meets-urban culture. Sea-to-sky road trips, Seawall runs, rooftop patios, and the best of West Coast living.',
+        tags: ['Sea-to-Sky', 'Seawall', 'West Coast', 'Urban Outdoor'],
+        collab: true,
+    },
+    {
+        id: 12,
+        name: 'Mei-Ling Park',
+        handle: '@meilingparenting',
+        province: 'BC', city: 'Burnaby',
+        niche: 'Parenting',
+        platforms: ['Instagram', 'YouTube'],
+        followers: 88000, engagement: 7.8,
+        bio: 'Mom of three sharing authentic parenting moments, multicultural family life, and gentle parenting tips from the Lower Mainland. Real talk, real kids, real chaos.',
+        tags: ['Gentle Parenting', 'Multicultural', 'Family Life', 'BC Family'],
+        collab: true,
+    },
+    {
+        id: 16,
+        name: 'Vanessa Nguyen',
+        handle: '@vanessalifestyle',
+        province: 'BC', city: 'Victoria',
+        niche: 'Lifestyle',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 52000, engagement: 9.8,
+        bio: 'Victoria-based lifestyle creator celebrating the beauty of slow living on Vancouver Island. Cozy aesthetics, wellness routines, and the best spots in the Capital Region.',
+        tags: ['Vancouver Island', 'Slow Living', 'Wellness', 'Victoria'],
+        collab: true,
+    },
+    {
+        id: 203,
+        name: 'Aaron Delacroix',
+        handle: '@aarondelacroix',
+        province: 'BC', city: 'Victoria',
+        niche: 'Travel',
+        platforms: ['Instagram', 'YouTube'],
+        followers: 74000, engagement: 7.5,
+        bio: 'Victoria-based travel creator exploring Vancouver Island\'s hidden gems — from Tofino surf breaks to the Gulf Islands and Port Renfrew old-growth forests.',
+        tags: ['Vancouver Island', 'Tofino', 'Gulf Islands', 'Island Travel'],
+        collab: true,
+    },
+    {
+        id: 204,
+        name: 'Simone Adeyemi',
+        handle: '@simoneadeyemi',
+        province: 'BC', city: 'Surrey',
+        niche: 'Beauty',
+        platforms: ['TikTok', 'Instagram', 'YouTube'],
+        followers: 143000, engagement: 8.6,
+        bio: 'Surrey-based beauty educator and content creator. Inclusive makeup tutorials, skincare for melanin-rich skin, and celebrating the diverse beauty of Metro Vancouver.',
+        tags: ['Inclusive Beauty', 'Surrey', 'Metro Vancouver', 'Melanin Skincare'],
+        collab: true,
+    },
+    {
+        id: 205,
+        name: 'Felix Huang',
+        handle: '@felixhuang_tech',
+        province: 'BC', city: 'Vancouver',
+        niche: 'Tech',
+        platforms: ['YouTube', 'X', 'Podcast'],
+        followers: 118000, engagement: 5.4,
+        bio: 'Vancouver tech journalist covering Canada\'s West Coast startup scene, AI companies, and the growing tech corridor between Vancouver and Seattle.',
+        tags: ['Vancouver Tech', 'Startups', 'AI', 'Pacific Northwest'],
+        collab: false,
+    },
+
+    // ── ALBERTA ────────────────────────────────────────────────
+    {
+        id: 7,
+        name: 'Annika Johansson',
+        handle: '@annikatravel',
+        province: 'AB', city: 'Calgary',
+        niche: 'Travel',
+        platforms: ['Instagram', 'YouTube'],
+        followers: 420000, engagement: 4.2,
+        bio: 'Calgary-based travel creator focusing on unique Canadian destinations and off-the-beaten-path international adventures. Banff to Bali, always with a budget-friendly twist.',
+        tags: ['Canadian Travel', 'Budget Travel', 'Adventure', 'Alberta'],
+        collab: true,
+    },
+    {
+        id: 15,
+        name: 'Tyler Kowalski',
+        handle: '@tylerkowalski',
+        province: 'AB', city: 'Edmonton',
+        niche: 'Sports',
+        platforms: ['Instagram', 'YouTube', 'X'],
+        followers: 190000, engagement: 5.7,
+        bio: 'Edmonton Oilers super fan, hockey analyst, and sports content creator. Game breakdowns, fantasy hockey tips, and live reactions to every Oilers game.',
+        tags: ['Hockey', 'Oilers', 'Sports Analysis', 'Fantasy Sports'],
+        collab: true,
+    },
+    {
+        id: 20,
+        name: 'Jessica Lavoie',
+        handle: '@jessfoodie',
+        province: 'AB', city: 'Calgary',
+        niche: 'Food',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 130000, engagement: 8.0,
+        bio: 'Calgary food blogger and recipe developer specializing in elevated comfort food with Canadian ingredients. From Alberta beef to Prairie grain bowls.',
+        tags: ['Recipe Development', 'Alberta Beef', 'Comfort Food', 'Calgary Eats'],
+        collab: true,
+    },
+    {
+        id: 301,
+        name: 'Dante Ferreira',
+        handle: '@dantebanff',
+        province: 'AB', city: 'Canmore',
+        niche: 'Outdoors',
+        platforms: ['Instagram', 'YouTube'],
+        followers: 210000, engagement: 7.3,
+        bio: 'Canmore-based outdoor adventurer living in the shadow of the Rockies. Backcountry skiing, mountaineering, and trail running in Banff and Kananaskis. Gear obsessed.',
+        tags: ['Banff', 'Kananaskis', 'Backcountry', 'Rocky Mountains'],
+        collab: true,
+    },
+    {
+        id: 302,
+        name: 'Maya Ostrowski',
+        handle: '@mayaostrowski',
+        province: 'AB', city: 'Calgary',
+        niche: 'Fitness',
+        platforms: ['Instagram', 'TikTok', 'YouTube'],
+        followers: 88000, engagement: 9.2,
+        bio: 'Calgary fitness coach and body positivity advocate. Strength training, functional fitness, and building a healthy relationship with movement for every body type.',
+        tags: ['Body Positivity', 'Strength Training', 'Functional Fitness', 'Calgary Fit'],
+        collab: true,
+    },
+    {
+        id: 303,
+        name: 'Leo Sandhu',
+        handle: '@leosandhu_yyc',
+        province: 'AB', city: 'Calgary',
+        niche: 'Lifestyle',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 57000, engagement: 8.8,
+        bio: 'South Asian lifestyle creator from Calgary. Documenting multicultural Calgary, Indo-Canadian culture, Stampede season, and the best fusion food spots in YYC.',
+        tags: ['South Asian', 'Calgary Stampede', 'Multicultural YYC', 'Fusion Food'],
+        collab: true,
+    },
+    {
+        id: 304,
+        name: 'Brooke Finley',
+        handle: '@brookefinley_ab',
+        province: 'AB', city: 'Edmonton',
+        niche: 'Fashion',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 72000, engagement: 8.1,
+        bio: 'Edmonton fashion creator bringing Prairie chic to the feed. Seasonal layering, local boutique spotlights, and affordable style finds for Albertan winters and summers alike.',
+        tags: ['Prairie Fashion', 'Edmonton Style', 'Boutique Finds', 'Seasonal Layers'],
+        collab: true,
+    },
+
+    // ── ONTARIO ────────────────────────────────────────────────
+    {
+        id: 3,
+        name: 'Priya Sharma',
+        handle: '@priya.eats',
+        province: 'ON', city: 'Toronto',
+        niche: 'Food',
+        platforms: ['Instagram', 'TikTok', 'YouTube'],
+        followers: 290000, engagement: 7.2,
+        bio: 'Toronto-based food creator exploring the city\'s wildly diverse restaurant scene. From Scarborough roti to Yorkville tasting menus — every cuisine, every budget.',
+        tags: ['Toronto Food', 'Restaurant Reviews', 'Diverse Cuisine', 'Foodie'],
+        collab: true,
+    },
+    {
+        id: 4,
+        name: 'Jordan Rivers',
+        handle: '@jordanrivers',
+        province: 'ON', city: 'Toronto',
+        niche: 'Tech',
+        platforms: ['YouTube', 'X', 'Podcast'],
+        followers: 1_450_000, engagement: 3.5,
+        bio: 'Canadian tech journalist and creator. Weekly deep dives on AI, startups, and consumer gadgets. Host of "North of Silicon" podcast, covering Canada\'s growing tech ecosystem.',
+        tags: ['AI', 'Startups', 'Gadgets', 'Podcast Host'],
+        collab: false,
+    },
+    {
+        id: 6,
+        name: 'Marcus Osei',
+        handle: '@marcusosei',
+        province: 'ON', city: 'Toronto',
+        niche: 'Music',
+        platforms: ['Instagram', 'TikTok', 'YouTube'],
+        followers: 670000, engagement: 5.9,
+        bio: 'Toronto-based R&B & Afrobeats musician and producer. Behind-the-scenes studio content, live performances, and collabs with the best in Canada\'s music scene.',
+        tags: ['R&B', 'Afrobeats', 'Music Production', 'Live Performance'],
+        collab: true,
+    },
+    {
+        id: 11,
+        name: 'Noah Belanger',
+        handle: '@noahfinance',
+        province: 'ON', city: 'Ottawa',
+        niche: 'Finance',
+        platforms: ['YouTube', 'X', 'Podcast'],
+        followers: 320000, engagement: 4.4,
+        bio: 'Canadian personal finance educator helping millennials and Gen Z build wealth. TFSA, RRSP, real estate, and investing — explained simply from Ottawa.',
+        tags: ['TFSA', 'RRSP', 'Investing', 'Real Estate'],
+        collab: false,
+    },
+    {
+        id: 13,
+        name: 'Derek Fontaine',
+        handle: '@derekcomedyca',
+        province: 'ON', city: 'Toronto',
+        niche: 'Comedy',
+        platforms: ['TikTok', 'Instagram', 'YouTube'],
+        followers: 1_800_000, engagement: 5.2,
+        bio: 'Stand-up comedian and sketch writer from Toronto. Viral short-form comedy skits poking fun at Canadian culture, Toronto life, and relatable millennial struggles.',
+        tags: ['Stand-Up', 'Sketch Comedy', 'Canadian Humour', 'Viral'],
+        collab: true,
+    },
+    {
+        id: 14,
+        name: 'Fatima Al-Hassan',
+        handle: '@fatimastyle',
+        province: 'ON', city: 'Mississauga',
+        niche: 'Fashion',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 240000, engagement: 7.0,
+        bio: 'Modest fashion influencer and stylist based in Mississauga. Helping women dress confidently and stylishly for any occasion. Representation matters.',
+        tags: ['Modest Fashion', 'Styling', 'Inclusivity', 'GTA'],
+        collab: true,
+    },
+    {
+        id: 18,
+        name: 'Grace Okonkwo',
+        handle: '@graceokonkwo',
+        province: 'ON', city: 'Brampton',
+        niche: 'Beauty',
+        platforms: ['TikTok', 'Instagram', 'YouTube'],
+        followers: 450000, engagement: 6.9,
+        bio: 'Beauty educator and brand consultant from Brampton. Expert in melanin-rich skin tones with tutorials that celebrate and serve the diversity of Canadian beauty.',
+        tags: ['Melanin Beauty', 'Skincare', 'Brand Consulting', 'Diversity'],
+        collab: true,
+    },
+    {
+        id: 21,
+        name: 'Ben Tripp',
+        handle: '@bentrippbiz',
+        province: 'ON', city: 'Toronto',
+        niche: 'Business',
+        platforms: ['X', 'Podcast', 'YouTube'],
+        followers: 205000, engagement: 3.9,
+        bio: 'Serial entrepreneur and angel investor based in Toronto. Sharing startup lessons, Canadian business news, and unfiltered takes on building companies from scratch.',
+        tags: ['Entrepreneurship', 'Angel Investing', 'Startups', 'Business'],
+        collab: false,
+    },
+    {
+        id: 24,
+        name: 'Omar Habib',
+        handle: '@omarhabibcomedy',
+        province: 'ON', city: 'Toronto',
+        niche: 'Comedy',
+        platforms: ['TikTok', 'Instagram'],
+        followers: 920000, engagement: 6.3,
+        bio: 'Comedian and writer from Toronto. Hilarious skits about Canadian immigrant life, multicultural Toronto, and the universal chaos of adulthood.',
+        tags: ['Immigrant Life', 'Multicultural', 'Toronto', 'Sketch'],
+        collab: true,
+    },
+    {
+        id: 401,
+        name: 'Cassandra Nkosi',
+        handle: '@cassandrankosi',
+        province: 'ON', city: 'Toronto',
+        niche: 'Lifestyle',
+        platforms: ['Instagram', 'TikTok', 'YouTube'],
+        followers: 162000, engagement: 7.6,
+        bio: 'Toronto Black lifestyle creator celebrating Afro-Canadian culture, community events, natural hair, travel, and the vibrant life of the Greater Toronto Area.',
+        tags: ['Black Canadian', 'Natural Hair', 'Afro-Canadian Culture', 'GTA Lifestyle'],
+        collab: true,
+    },
+    {
+        id: 402,
+        name: 'Patrick Lalonde',
+        handle: '@patricklalonde',
+        province: 'ON', city: 'Ottawa',
+        niche: 'Travel',
+        platforms: ['Instagram', 'YouTube'],
+        followers: 89000, engagement: 6.8,
+        bio: 'Ottawa-based travel creator with a focus on family-friendly Canadian destinations. National Capital Region adventures, Quebec day trips, and road trips across Eastern Canada.',
+        tags: ['Family Travel', 'Ottawa', 'National Capital', 'Eastern Canada'],
+        collab: true,
+    },
+    {
+        id: 403,
+        name: 'Amara Diallo',
+        handle: '@amaradiallo_fit',
+        province: 'ON', city: 'Toronto',
+        niche: 'Fitness',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 115000, engagement: 9.4,
+        bio: 'Toronto fitness trainer and runner. Marathon training, sprints, and strength programming for busy city professionals. West African fitness traditions meet modern sport science.',
+        tags: ['Marathon', 'Running', 'Strength', 'Toronto Fitness'],
+        collab: true,
+    },
+    {
+        id: 404,
+        name: 'Sean Whitfield',
+        handle: '@seanwhitfield_on',
+        province: 'ON', city: 'Hamilton',
+        niche: 'Food',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 68000, engagement: 9.0,
+        bio: 'Hamilton food creator documenting the Steel City\'s surprisingly great food scene. Local breweries, James Street North dining, and supporting Hamilton\'s independent restaurants.',
+        tags: ['Hamilton Food', 'Local Brewery', 'Steel City', 'Independent Restaurants'],
+        collab: true,
+    },
+
+    // ── QUÉBEC ─────────────────────────────────────────────────
+    {
+        id: 1,
+        name: 'Sophie Tremblay',
+        handle: '@sophietremblay',
+        province: 'QC', city: 'Montréal',
+        niche: 'Fashion',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 820000, engagement: 4.8,
+        bio: 'Fashion & lifestyle créatrice based in Montréal. Bilingual content celebrating Canadian style, sustainable brands, and city culture. Partenariats / partnerships welcome.',
+        tags: ['Sustainable Fashion', 'Bilingual', 'Street Style', 'Quebec'],
+        collab: true,
+    },
+    {
+        id: 5,
+        name: 'Camille Bouchard',
+        handle: '@camille.fitness',
+        province: 'QC', city: 'Québec City',
+        niche: 'Fitness',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 180000, engagement: 8.4,
+        bio: 'Certified personal trainer and nutritionist from Québec City. Strength training, HIIT, and mindful eating — approachable wellness for everyday Canadians.',
+        tags: ['Personal Training', 'Nutrition', 'Strength', 'Wellness'],
+        collab: true,
+    },
+    {
+        id: 8,
+        name: 'Étienne Gagnon',
+        handle: '@etienne.lifestyle',
+        province: 'QC', city: 'Montréal',
+        niche: 'Lifestyle',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 95000, engagement: 9.1,
+        bio: 'Montréal lifestyle creator documenting city living, coffee shop culture, interior design, and the art of slow mornings. Aesthetic content with a Québécois soul.',
+        tags: ['Montreal', 'Interior Design', 'Coffee', 'Slow Living'],
+        collab: true,
+    },
+    {
+        id: 10,
+        name: 'Isabelle Côté',
+        handle: '@isabellebeauty',
+        province: 'QC', city: 'Montréal',
+        niche: 'Beauty',
+        platforms: ['Instagram', 'YouTube', 'TikTok'],
+        followers: 760000, engagement: 6.5,
+        bio: 'Bilingual beauty creator specializing in skincare, makeup tutorials, and honest reviews. Advocating for inclusive beauty and cruelty-free products from Montréal.',
+        tags: ['Skincare', 'Makeup', 'Cruelty-Free', 'Bilingual'],
+        collab: true,
+    },
+    {
+        id: 17,
+        name: 'Samuel Dubois',
+        handle: '@samduboistech',
+        province: 'QC', city: 'Montréal',
+        niche: 'Tech',
+        platforms: ['YouTube', 'X'],
+        followers: 78000, engagement: 5.3,
+        bio: 'Montréal-based developer and tech creator. Tutorials on web development, open source projects, and a weekly deep dive into what\'s happening in Canadian tech startups.',
+        tags: ['Web Dev', 'Open Source', 'Startups', 'Montréal Tech'],
+        collab: true,
+    },
+    {
+        id: 501,
+        name: 'Léa Villeneuve',
+        handle: '@leavilleneuve',
+        province: 'QC', city: 'Montréal',
+        niche: 'Food',
+        platforms: ['Instagram', 'TikTok', 'YouTube'],
+        followers: 134000, engagement: 8.7,
+        bio: 'Montréal food creator obsessed with Québécois cuisine and the city\'s world-class restaurant scene. Poutine to fine dining, bagels to smoked meat — tout Montréal dans une assiette.',
+        tags: ['Québécois Cuisine', 'Montreal Restaurants', 'Poutine', 'French Canadian Food'],
+        collab: true,
+    },
+    {
+        id: 502,
+        name: 'Remy Ouellet',
+        handle: '@remyouellet_outdoors',
+        province: 'QC', city: 'Québec City',
+        niche: 'Outdoors',
+        platforms: ['Instagram', 'YouTube'],
+        followers: 47000, engagement: 8.9,
+        bio: 'Québec City outdoor enthusiast covering the Laurentians, Charlevoix, and Gaspésie. Snowshoeing, backcountry skiing, and summer hiking in la belle province.',
+        tags: ['Laurentians', 'Charlevoix', 'Gaspésie', 'Quebec Outdoors'],
+        collab: true,
+    },
+
+    // ── MARITIMES ──────────────────────────────────────────────
+    {
+        id: 19,
+        name: 'Alex Cormier',
+        handle: '@alexoutdoors',
+        province: 'NS', city: 'Halifax',
+        niche: 'Outdoors',
+        platforms: ['Instagram', 'YouTube'],
+        followers: 36000, engagement: 10.2,
+        bio: 'Halifax-based outdoor enthusiast documenting Nova Scotia\'s hidden trails, sea kayaking routes, and wild Atlantic coastline. Come explore Atlantic Canada.',
+        tags: ['Nova Scotia', 'Sea Kayaking', 'Atlantic Canada', 'Trails'],
+        collab: true,
+    },
+    {
+        id: 23,
+        name: 'Chloe Landry',
+        handle: '@chloetravels',
+        province: 'NB', city: 'Moncton',
+        niche: 'Travel',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 67000, engagement: 8.6,
+        bio: 'Bilingual travel creator from Moncton exploring the Maritime provinces and beyond. Hidden gems of New Brunswick, PEI, and Nova Scotia — featuring local businesses.',
+        tags: ['Maritimes', 'Bilingual', 'Hidden Gems', 'Local Business'],
+        collab: true,
+    },
+    {
+        id: 601,
+        name: 'Dana MacPherson',
+        handle: '@danamacpherson_ns',
+        province: 'NS', city: 'Halifax',
+        niche: 'Food',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 43000, engagement: 9.8,
+        bio: 'Halifax food creator celebrating Nova Scotia seafood, farmers markets, and the East Coast dining scene. Lobster rolls, donairs, and everything in between.',
+        tags: ['Nova Scotia Seafood', 'Halifax Food', 'Lobster', 'East Coast Eats'],
+        collab: true,
+    },
+    {
+        id: 602,
+        name: 'Evan Chisholm',
+        handle: '@evanchisholm_pei',
+        province: 'PE', city: 'Charlottetown',
+        niche: 'Lifestyle',
+        platforms: ['Instagram', 'TikTok', 'YouTube'],
+        followers: 31000, engagement: 11.4,
+        bio: 'PEI lifestyle creator showing the world why the Island is Canada\'s best-kept secret. Red sand beaches, Anne of Green Gables country, lobster season, and slow Island life.',
+        tags: ['PEI', 'Island Life', 'Red Sand Beaches', 'Charlottetown'],
+        collab: true,
+    },
+
+    // ── PRAIRIES ───────────────────────────────────────────────
+    {
+        id: 25,
+        name: 'Brianna Wolf',
+        handle: '@briannawolf',
+        province: 'MB', city: 'Winnipeg',
+        niche: 'Lifestyle',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 44000, engagement: 9.5,
+        bio: 'Winnipeg-based lifestyle creator bringing Prairie vibes to your feed. Home décor, seasonal recipes, small business spotlights, and honest takes on life in the Peg.',
+        tags: ['Winnipeg', 'Prairie Life', 'Home Décor', 'Small Business'],
+        collab: true,
+    },
+    {
+        id: 701,
+        name: 'Jade Rempel',
+        handle: '@jaderempel_mb',
+        province: 'MB', city: 'Winnipeg',
+        niche: 'Food',
+        platforms: ['Instagram', 'TikTok'],
+        followers: 26000, engagement: 10.6,
+        bio: 'Winnipeg food blogger celebrating Manitoba cuisine — perogies, Ukrainian food culture, the Forks Market, and the growing restaurant scene in Canada\'s most underrated food city.',
+        tags: ['Winnipeg Food', 'Ukrainian Cuisine', 'Perogies', 'Forks Market'],
+        collab: true,
+    },
+    {
+        id: 702,
+        name: 'Carson Holt',
+        handle: '@carsonholt_sk',
+        province: 'SK', city: 'Saskatoon',
+        niche: 'Outdoors',
+        platforms: ['Instagram', 'YouTube'],
+        followers: 19000, engagement: 10.8,
+        bio: 'Saskatoon outdoor creator covering Saskatchewan\'s hidden landscapes — Waskesiu, Waskana, and the vast Prairie wilderness most Canadians never see. Big skies, real adventures.',
+        tags: ['Saskatchewan', 'Waskesiu', 'Prairie Wilderness', 'Big Skies'],
+        collab: true,
+    },
 ];
 
+// ---- State ----
 let filtered = [...INFLUENCERS];
 
+// ---- Build city list dynamically ----
+function buildCityOptions() {
+    const cityMap = {};
+    INFLUENCERS.forEach(inf => {
+        if (!cityMap[inf.province]) cityMap[inf.province] = new Set();
+        cityMap[inf.province].add(inf.city);
+    });
+    const sel = document.getElementById('filterCity');
+    // Group by province
+    const provinces = Object.keys(cityMap).sort();
+    provinces.forEach(prov => {
+        const group = document.createElement('optgroup');
+        group.label = PROVINCE_NAMES[prov] || prov;
+        [...cityMap[prov]].sort().forEach(city => {
+            const opt = document.createElement('option');
+            opt.value = city;
+            opt.textContent = city;
+            group.appendChild(opt);
+        });
+        sel.appendChild(group);
+    });
+}
+
+// ---- Filter & Sort ----
 function getFilters() {
     return {
         search:   document.getElementById('searchInput').value.toLowerCase().trim(),
         province: document.getElementById('filterProvince').value,
+        city:     document.getElementById('filterCity').value,
         niche:    document.getElementById('filterNiche').value,
         platform: document.getElementById('filterPlatform').value,
         size:     document.getElementById('filterSize').value,
@@ -484,21 +1576,28 @@ function getFilters() {
 
 function applyFilters() {
     const f = getFilters();
+
     document.getElementById('clearSearch').classList.toggle('visible', f.search.length > 0);
-    ['filterProvince','filterNiche','filterPlatform','filterSize'].forEach(id => {
+    ['filterProvince','filterCity','filterNiche','filterPlatform','filterSize'].forEach(id => {
         document.getElementById(id).classList.toggle('active', !!document.getElementById(id).value);
     });
+
+    // When province changes, update city dropdown
+    syncCityToProvince(f.province);
+
     filtered = INFLUENCERS.filter(inf => {
         if (f.province && inf.province !== f.province) return false;
+        if (f.city     && inf.city     !== f.city)     return false;
         if (f.niche    && inf.niche    !== f.niche)    return false;
         if (f.platform && !inf.platforms.includes(f.platform)) return false;
         if (f.size     && sizeCategory(inf.followers) !== f.size) return false;
         if (f.search) {
-            const h = (inf.name+' '+inf.handle+' '+inf.bio+' '+inf.tags.join(' ')+' '+inf.city).toLowerCase();
+            const h = `${inf.name} ${inf.handle} ${inf.bio} ${inf.tags.join(' ')} ${inf.city}`.toLowerCase();
             if (!h.includes(f.search)) return false;
         }
         return true;
     });
+
     filtered.sort((a, b) => {
         switch (f.sort) {
             case 'followers_asc':   return a.followers - b.followers;
@@ -507,70 +1606,107 @@ function applyFilters() {
             default:                return b.followers - a.followers;
         }
     });
+
     renderChips(f);
     renderResults();
+}
+
+function syncCityToProvince(province) {
+    const sel = document.getElementById('filterCity');
+    const currentCity = sel.value;
+    // Show/hide optgroups based on selected province
+    [...sel.querySelectorAll('optgroup')].forEach(grp => {
+        const match = !province || grp.label === (PROVINCE_NAMES[province] || province);
+        grp.style.display = match ? '' : 'none';
+        if (!match) {
+            [...grp.querySelectorAll('option')].forEach(o => { if (o.selected) sel.value = ''; });
+        }
+    });
 }
 
 function resetFilters() {
     document.getElementById('searchInput').value = '';
     document.getElementById('filterProvince').value = '';
+    document.getElementById('filterCity').value = '';
     document.getElementById('filterNiche').value = '';
     document.getElementById('filterPlatform').value = '';
     document.getElementById('filterSize').value = '';
     document.getElementById('sortBy').value = 'followers_desc';
     applyFilters();
 }
-function clearSearch() { document.getElementById('searchInput').value = ''; applyFilters(); document.getElementById('searchInput').focus(); }
 
-const PROVINCE_NAMES = { AB:'Alberta', BC:'British Columbia', MB:'Manitoba', NB:'New Brunswick', NL:'Newfoundland & Labrador', NS:'Nova Scotia', ON:'Ontario', PE:'Prince Edward Island', QC:'Québec', SK:'Saskatchewan' };
-const SIZE_NAMES = { nano:'Nano (<10K)', micro:'Micro (10K–100K)', mid:'Mid-tier (100K–500K)', macro:'Macro (500K–1M)', mega:'Mega (1M+)' };
+function clearSearch() {
+    document.getElementById('searchInput').value = '';
+    applyFilters();
+    document.getElementById('searchInput').focus();
+}
+
+// ---- Chips ----
+const PROVINCE_NAMES = {
+    AB:'Alberta', BC:'British Columbia', MB:'Manitoba', NB:'New Brunswick',
+    NL:'Newfoundland & Labrador', NS:'Nova Scotia', ON:'Ontario',
+    PE:'Prince Edward Island', QC:'Québec', SK:'Saskatchewan',
+};
+const SIZE_NAMES = {
+    nano:'Nano (<10K)', micro:'Micro (10K–100K)', mid:'Mid-tier (100K–500K)',
+    macro:'Macro (500K–1M)', mega:'Mega (1M+)',
+};
 
 function renderChips(f) {
     const chips = [];
     if (f.province) chips.push({ label: PROVINCE_NAMES[f.province], clear: () => { document.getElementById('filterProvince').value=''; applyFilters(); } });
+    if (f.city)     chips.push({ label: f.city,                      clear: () => { document.getElementById('filterCity').value='';     applyFilters(); } });
     if (f.niche)    chips.push({ label: f.niche,                     clear: () => { document.getElementById('filterNiche').value='';    applyFilters(); } });
     if (f.platform) chips.push({ label: f.platform,                  clear: () => { document.getElementById('filterPlatform').value=''; applyFilters(); } });
     if (f.size)     chips.push({ label: SIZE_NAMES[f.size],          clear: () => { document.getElementById('filterSize').value='';     applyFilters(); } });
-    if (f.search)   chips.push({ label: '"'+f.search+'"',            clear: () => { clearSearch(); } });
+    if (f.search)   chips.push({ label: `"${f.search}"`,             clear: () => { clearSearch(); } });
+
     const bar = document.getElementById('chipsBar');
     bar.innerHTML = chips.map((c,i) => `<span class="chip" onclick="chipClear(${i})">${c.label} <span class="chip-x">✕</span></span>`).join('');
     bar.style.paddingBottom = chips.length ? '8px' : '0';
-    window._chipFns = chips.map(c => c.clear);
+    window._chipClearFns = chips.map(c => c.clear);
 }
-function chipClear(i) { window._chipFns[i](); }
 
-function platformClass(p) { return p.toLowerCase().replace(/[^a-z]/g,''); }
+function chipClear(i) { window._chipClearFns[i](); }
+
+// ---- Render Cards ----
+function platformClass(p) { return p.toLowerCase().replace(/[^a-z]/g, ''); }
 
 function renderCard(inf) {
     const engLevel = engagementLabel(inf.engagement);
     const color = avatarColor(inf.id);
-    const platforms = inf.platforms.map(p => `<span class="platform-tag ${platformClass(p)}">${PLATFORM_ICONS[p]||''} ${p}</span>`).join('');
-    return `<div class="card" onclick="openModal(${inf.id})">
-        <div class="card-header">
-            <div class="card-avatar" style="background:${color}">${initials(inf.name)}</div>
-            <div class="card-info">
-                <div class="card-name">${inf.name}</div>
-                <div class="card-handle">${inf.handle}</div>
-                <div class="card-location">📍 ${inf.city}, ${inf.province}</div>
+    const platforms = inf.platforms.map(p =>
+        `<span class="platform-tag ${platformClass(p)}">${PLATFORM_ICONS[p]||''} ${p}</span>`
+    ).join('');
+    return `
+        <div class="card" onclick="openModal(${inf.id})">
+            <div class="card-header">
+                <div class="card-avatar" style="background:${color}">${initials(inf.name)}</div>
+                <div class="card-info">
+                    <div class="card-name">${inf.name}</div>
+                    <div class="card-handle">${inf.handle}</div>
+                    <div class="card-location">📍 ${inf.city}, ${inf.province}</div>
+                </div>
             </div>
+            <span class="card-niche">${inf.niche}</span>
+            <div class="card-platforms">${platforms}</div>
+            <div class="card-stats">
+                <div class="stat-box"><div class="stat-value">${fmtFollowers(inf.followers)}</div><div class="stat-label">Followers</div></div>
+                <div class="stat-box"><div class="stat-value">${inf.engagement}%</div><div class="stat-label">Engagement</div></div>
+                <div class="stat-box"><div class="stat-value">${inf.platforms.length}</div><div class="stat-label">Platform${inf.platforms.length!==1?'s':''}</div></div>
+            </div>
+            <div class="card-bio">${inf.bio}</div>
+            <div class="engagement-pill ${engLevel}">${engagementText(inf.engagement)}</div>
         </div>
-        <span class="card-niche">${inf.niche}</span>
-        <div class="card-platforms">${platforms}</div>
-        <div class="card-stats">
-            <div class="stat-box"><div class="stat-value">${fmtFollowers(inf.followers)}</div><div class="stat-label">Followers</div></div>
-            <div class="stat-box"><div class="stat-value">${inf.engagement}%</div><div class="stat-label">Engagement</div></div>
-            <div class="stat-box"><div class="stat-value">${inf.platforms.length}</div><div class="stat-label">Platform${inf.platforms.length!==1?'s':''}</div></div>
-        </div>
-        <div class="card-bio">${inf.bio}</div>
-        <div class="engagement-pill ${engLevel}">${engagementText(inf.engagement)}</div>
-    </div>`;
+    `;
 }
 
 function renderResults() {
-    const grid = document.getElementById('cardsGrid');
+    const grid   = document.getElementById('cardsGrid');
     const header = document.getElementById('resultsHeader');
-    const noRes = document.getElementById('noResults');
-    document.getElementById('totalCount').textContent = INFLUENCERS.length + ' influencers';
+    const noRes  = document.getElementById('noResults');
+    document.getElementById('totalCount').textContent = `${INFLUENCERS.length} influencers`;
+
     if (filtered.length === 0) {
         grid.innerHTML = ''; noRes.style.display = 'block'; header.textContent = ''; return;
     }
@@ -581,11 +1717,14 @@ function renderResults() {
         : `Showing <strong>${filtered.length}</strong> of ${INFLUENCERS.length} influencers`;
 }
 
+// ---- Modal ----
 function openModal(id) {
     const inf = INFLUENCERS.find(i => i.id === id);
     if (!inf) return;
     const color = avatarColor(inf.id);
-    const platforms = inf.platforms.map(p => `<span class="modal-platform-btn ${platformClass(p)}">${PLATFORM_ICONS[p]||''} ${p}</span>`).join('');
+    const platforms = inf.platforms.map(p =>
+        `<span class="modal-platform-btn ${platformClass(p)}">${PLATFORM_ICONS[p]||''} ${p}</span>`
+    ).join('');
     const tags = inf.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
     document.getElementById('modalBody').innerHTML = `
         <div class="modal-hero">
@@ -609,18 +1748,27 @@ function openModal(id) {
         <div class="modal-section-title">Tags</div>
         <div class="modal-tags">${tags}</div>
         <div class="modal-section-title">Collaboration</div>
-        <div style="font-size:13px;color:var(--text-sub)">${inf.collab ? '✅ Open to brand collaborations and partnerships.' : '⏸️ Not currently seeking new collaborations.'}</div>
-        <button class="contact-btn" onclick="contactInfluencer('${inf.name.split(' ')[0]}')">Contact ${inf.name.split(' ')[0]} →</button>
+        <div style="font-size:13px;color:var(--text-sub)">${inf.collab
+            ? '✅ Open to brand collaborations and partnerships.'
+            : '⏸️ Not currently seeking new collaborations.'}</div>
+        <button class="contact-btn" onclick="contactInfluencer('${inf.name.split(' ')[0]}')">
+            Contact ${inf.name.split(' ')[0]} →
+        </button>
     `;
     document.getElementById('modalOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
 }
 function closeModal(e) { if (e.target === document.getElementById('modalOverlay')) closeModalDirect(); }
 function closeModalDirect() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow = ''; }
-function contactInfluencer(name) { alert('This would open a contact form for ' + name + '.\n\nIn a production app, this links to a CRM or the influencer\'s media kit.'); }
+function contactInfluencer(name) {
+    alert(`This would open a contact form or email template for ${name}.\n\nIn a production app, this links to a CRM, contact form, or the influencer's media kit.`);
+}
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
 
+// ---- Init ----
+buildCityOptions();
 applyFilters();
+
 </script>
 </body>
 </html>
